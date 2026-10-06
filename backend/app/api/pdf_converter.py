@@ -23,6 +23,8 @@ from app.auth.dependencies import (
     require_permission,
 )
 
+from app.auth.permissions import permission
+
 from app.services.pdf_converter_service import (
     PdfConverterService,
 )
@@ -142,6 +144,7 @@ async def save_uploaded_file(
         )
     ],
 )
+@permission("pdf_converter.create")
 async def convert_pdf_to_excel(
     file: UploadFile = File(...),
 ):
@@ -247,6 +250,7 @@ async def convert_pdf_to_excel(
         )
     ],
 )
+@permission("pdf_converter.create")
 async def convert_pdf_to_word(
     file: UploadFile = File(...),
 ):

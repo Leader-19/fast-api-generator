@@ -26,7 +26,7 @@
             v-model="form.email"
             type="email"
             required
-            placeholder="you@example.com"
+            placeholder="Email address"
             class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm
                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
                    transition"

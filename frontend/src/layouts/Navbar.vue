@@ -32,7 +32,7 @@
             <!-- User dropdown -->
             <div class="relative" ref="dropdownRef">
                 <button type="button" @click="isOpen = !isOpen" class="flex items-center gap-2.5 cursor-pointer group">
-                    <img src="../../public/favicon.ico" alt="User avatar"
+                    <img src="../../public/logo.jpg" alt="User avatar"
                         class="w-9 h-9 rounded-full object-cover ring-2 ring-transparent group-hover:ring-blue-500 transition" />
                     <span class="hidden md:block text-sm font-medium text-slate-700">
                         {{ userName }}

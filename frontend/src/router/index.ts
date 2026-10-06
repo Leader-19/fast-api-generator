@@ -9,7 +9,7 @@ const routes: RouteRecordRaw[] = [
     path: '/login',
     name: 'Login',
     component: () => import('@/auth/Login.vue'),
-    meta: { guest: true },
+    meta: { guest: true, title: 'Sign in' },
   },
 
   {
@@ -21,11 +21,19 @@ const routes: RouteRecordRaw[] = [
         path: '',
         name: 'Dashboard',
         component: () => import('@/views/Dashboard.vue'),
+        meta: { title: 'Dashboard' },
       },
       {
         path: 'reports',
         name: 'Reports',
         component: () => import('@/views/Reports.vue'),
+        meta: { title: 'Reconciliation Reports' },
+      },
+      {
+        path: 'reports/runs/:runId',
+        name: 'ReportRunDetail',
+        component: () => import('@/views/reports/RunDetail.vue'),
+        meta: { title: 'Run Details' },
       },
 
       {
@@ -35,11 +43,13 @@ const routes: RouteRecordRaw[] = [
             path: '',
             name: 'Operations',
             component: () => import('@/views/operations/index.vue'),
+            meta: { title: 'Operations' },
           },
           {
             path: 'pdf',
             name: 'PDF',
             component: () => import('@/views/operations/PDF/PdfConverter.vue'),
+            meta: { title: 'PDF Converter' },
           }
 
         ]
@@ -79,6 +89,14 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+})
+
+router.afterEach((to) => {
+  const title = to.meta.title as string | undefined
+
+  document.title = title
+    ? `${title} · Roaming Portal`
+    : 'Roaming Portal'
 })
 
 router.beforeEach((to) => {
